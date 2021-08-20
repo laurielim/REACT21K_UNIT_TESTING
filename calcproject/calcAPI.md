@@ -105,3 +105,24 @@ Note: alternatively, mark as follows to allow for simple copy pasting
 - subtract('', '') throws and exception "only numbers allowed"
 - subtract(null, 1) throws and exception "parameter missing"
 - subtract(undefined, 1) throws and exception "parameter missing"
+
+## division
+
+function divide(a,b) return a/b
+
+problems:
+
+0/0 => NaN
+2/0 => Infinity
+-2/0 => -Infinity
+Infinity/Infinity => NaN
+-Infinity/Infinity => NaN
+Infinity/-Infinity => NaN
+-Infinity/-Infinity => NaN
+
+### Test cases
+
+[0, 0, Number.NaN],
+[2, 0, Number.POSITIVE_INFINITY],
+[-2, 0, Number.NEGATIVE_INFINITY],
+[Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY, Number.NaN],

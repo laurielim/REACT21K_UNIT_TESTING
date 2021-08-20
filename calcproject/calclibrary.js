@@ -19,5 +19,10 @@ function subtract(a, b) {
 	return a - b;
 }
 
+// partial implementation - error handling missing
+function divide(a, b) {
+	return a / b;
+}
+
 // export object with name of functions to be exported instead of individually exporting each function
-module.exports = { sum, subtract };
+module.exports = { sum, subtract, divide };
