@@ -19,3 +19,10 @@ Note that test case descriptions are usually in their own file but for the sake 
 - sum(2,3) return 5
 - sum(-2,-4) return -6
 - sum(-2,4) return 2
+
+[2, -4, -2],
+[0, 0, 0],
+[0, 3, 3,],
+[3, 0, 3,],
+[0. -3, -3],
+[-3, 0, -3]
