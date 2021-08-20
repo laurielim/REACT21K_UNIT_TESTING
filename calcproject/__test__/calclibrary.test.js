@@ -39,7 +39,42 @@ describe("Test sum function", () => {
 		];
 
 		test.each(testValues)("sum(%s, %s) = %s", (a, b, expectedResult) => {
-			expect(sum(a, b)).toBeCloseTo(expectedResult, 2);
+			expect(sum(a, b)).toBeCloseTo(expectedResult);
+		});
+	});
+});
+
+describe("Test subtract function", () => {
+	describe("Test subtract with integers", () => {
+		const testValues = [
+			// [a, b, expectedResult]
+			[2, -4, 6],
+			[0, 0, 0],
+			[0, 3, -3],
+			[3, 0, 3],
+			[0, -3, 3],
+			[-3, 0, -3],
+		];
+
+		// %s is a placeholder for a string
+		test.each(testValues)("subtract(%s, %s) = %s", (a, b, expectedResult) => {
+			expect(subtract(a, b)).toBe(expectedResult);
+		});
+	});
+
+	describe("Test subtract with floats using test.each", () => {
+		const testValues = [
+			// [a, b, expectedResult]
+			[3, -2.5, 5.5],
+			[-3, 2.5, -5.5],
+			[-2.5, -3, 0.5],
+			[-2.5, -2.5, 0],
+			[2.5, -2.5, 5.0],
+			[2.4, 2.5, -0.1],
+		];
+
+		test.each(testValues)("subtract(%s, %s) = %s", (a, b, expectedResult) => {
+			expect(subtract(a, b)).toBeCloseTo(expectedResult);
 		});
 	});
 });
@@ -48,6 +83,8 @@ describe("Test exceptions", () => {
 	describe("Test missing parameters throw an exception", () => {
 		test('sum() throws an exception "parameter missing"', () =>
 			expect(() => sum()).toThrow("parameter missing"));
+		test('subtract() throws an exception "parameter missing"', () =>
+			expect(() => subtract()).toThrow("parameter missing"));
 
 		const testValues = [
 			[null, "parameter missing"],
@@ -60,6 +97,12 @@ describe("Test exceptions", () => {
 			"sum(%s) throws an exception: %s",
 			(value, expected) => {
 				expect(() => sum(value)).toThrow(expected);
+			}
+		);
+		test.each(testValues)(
+			"subtract(%s) throws an exception: %s",
+			(value, expected) => {
+				expect(() => subtract(value)).toThrow(expected);
 			}
 		);
 	});
@@ -76,6 +119,9 @@ describe("Test exceptions", () => {
 
 		test.each(testValues)("sum(%s, %s) throws %s", (a, b, expected) => {
 			expect(() => sum(a, b)).toThrow(expected);
+		});
+		test.each(testValues)("subtract(%s, %s) throws %s", (a, b, expected) => {
+			expect(() => subtract(a, b)).toThrow(expected);
 		});
 	});
 });

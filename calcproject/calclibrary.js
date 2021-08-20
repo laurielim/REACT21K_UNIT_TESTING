@@ -11,7 +11,7 @@ function sum(a, b) {
 	return a + b;
 }
 
-function substract(a, b) {
+function subtract(a, b) {
 	if (a == undefined || b == undefined) throw new Error("parameter missing");
 	if (typeof a !== "number" || typeof b !== "number")
 		throw new Error("only numbers allowed");
@@ -20,4 +20,4 @@ function substract(a, b) {
 }
 
 // export object with name of functions to be exported instead of individually exporting each function
-module.exports = { sum };
+module.exports = { sum, subtract };
