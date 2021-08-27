@@ -14,15 +14,42 @@ This is a Dice class for dice games. Dice holds the number of dots. The number o
   - upper bound > 20: `'upper bound is too big'`
   - upper bound < 1: `'upper bound is too small'`
 
+#### Test cases for constructor
+
+1. Create a dice with no upper bound given
+
+1. Create a dice with given upper bound 2-20
+
+1. Test the exceptions
+   - 0 throws an exception `'Upper bound too small'`
+   - 1 throws an exception `'Upper bound too small'`
+   - -1 throws an exception `'Upper bound too small'`
+   - 21 throws an exception `'Upper bound too big'`
+   - 'a' throws an exception `'Upper bound must be an integer'`
+   - 2.5 throws an exception `'Upper bound must be an integer'`
+
 ### methods
 
 #### roll
 
 Rolls the dice and set the dot count to a random number between 1 and the upper bound (included). Returns nothing.
 
+##### Test cases for roll
+
+1. Create a dice with no upper bound. Upper bound should be 6. Test when the dice hasn´t been rolled, dot count is 0. Then roll the dice and now dot count should be between 1 and 6.
+
+1. Create a dice with upper bound 20 => after rolled results dot count between 1 and 20.
+
 #### toString
 
 Returns the dot count as a string. For example: `'3'`. If the dice has not been rolled and dot count is 0, returns a text: `'Not rolled yet'`
+
+##### Test cases for toString
+
+In both cases create a new dice (no upper bound).
+
+- Roll the dice and compare result string with dots
+- Don't roll the dice. Compare results to `'Not rolled yet'`
 
 ### Getter
 
