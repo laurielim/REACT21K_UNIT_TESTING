@@ -1,0 +1,29 @@
+[
+	{
+		"firstname": "John",
+		"lastname": "Doe",
+		"phones": [
+			{ "type": "home", "number": 12345678 },
+			{ "type": "work", "number": 11122233 },
+			{ "type": "mobile", "number": 98765432 }
+		]
+	},
+	{
+		"firstname": "Matt",
+		"lastname": "River",
+		"phones": [
+			{ "type": "home", "number": 56873422 },
+			{ "type": "work", "number": 78788877 },
+			{ "type": "mobile", "number": 2348654 }
+		]
+	},
+	{
+		"firstname": "Leila",
+		"lastname": "River",
+		"phones": [
+			{ "type": "home", "number": 25634544 },
+			{ "type": "work", "number": 7425775 },
+			{ "type": "mobile", "number": 2223453 }
+		]
+	}
+]
