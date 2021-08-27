@@ -18,7 +18,13 @@ This is a Dice class for dice games. Dice holds the number of dots. The number o
 
 1. Create a dice with no upper bound given
 
+   - Create a dice with dot count between 1 and 6
+   - Dot count is zero
+
 1. Create a dice with given upper bound 2-20
+
+   - Create a dice with dot count between 1 and upper bound
+   - Dot count is zero (tested in test case 1)
 
 1. Test the exceptions
    - 0 throws an exception `'Upper bound too small'`
