@@ -79,11 +79,12 @@ describe("Test toString", () => {
 	beforeEach(() => (dice = new Dice()));
 
 	test("Dice is not rolled yet", () => {
-		expected(dice.toString()).toBe("Not rolled yet");
+		expect(dice.toString()).toBe("Not rolled yet");
 	});
 
 	test("Dice rolled", () => {
-		expect(dice.toString().toBe(`${dice.dots}`));
+		dice.roll();
+		expect(dice.toString()).toBe(`${dice.dots}`);
 	});
 });
 
