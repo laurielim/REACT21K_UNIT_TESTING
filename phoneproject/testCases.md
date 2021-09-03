@@ -48,6 +48,12 @@ Test data:
 ]
 ```
 
+Returns
+
+```json
+["home", "work", "mobile"]
+```
+
 ### Test 2: persons heve no phones
 
 Test data:
@@ -99,6 +105,18 @@ returns
 
 ```json
 [98765432]
+```
+
+## Test 3: get from default jsonData with parameters Matt, River, work
+
+```js
+phoneRegister.getNumbersByType("Matt", "River", "work");
+```
+
+returns
+
+```json
+[]
 ```
 
 ## getAllNumbersByType(type)
