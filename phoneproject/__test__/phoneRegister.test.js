@@ -152,3 +152,67 @@ describe("Test getAllNumbersByType", () => {
     );
   });
 });
+
+describe("Test getAllNumbers", () => {
+  test("Default data", () => {
+    const phoneRegister = new PhoneRegister(phones);
+    expect(phoneRegister.getAllNumbers()).toEqual(phones);
+  });
+
+  test("Contacts have no number", () => {
+    const testCases = [
+      {
+        firstname: "John",
+        lastname: "Doe",
+        phones: [],
+      },
+      {
+        firstname: "Matt",
+        lastname: "River",
+        phones: [],
+      },
+      {
+        firstname: "Leila",
+        lastname: "River",
+        phones: [],
+      },
+    ];
+    const phoneRegister = new PhoneRegister(testCases);
+    expect(phoneRegister.getAllNumbers()).toEqual([]);
+  });
+
+  /* test("Default data", () => {
+    const phoneRegister = new PhoneRegister(phones);
+  }); */
+
+  test("All persons missing", () => {
+    const phoneRegister = new PhoneRegister([]);
+    expect(phoneRegister.getAllNumbers()).toEqual([]);
+  });
+});
+
+describe("Test getName", () => {
+  const phoneRegister = new PhoneRegister(phones);
+  test("Get name of number `12345678`", () => {
+    expect(phoneRegister.getName(12345678)).toEqual({
+      firstname: "John",
+      lastname: "Doe",
+    });
+  });
+
+  describe("Get name of number from default data", () => {
+    const testCases = [
+      [11122233, { firstname: "John", lastname: "Doe" }],
+      [78788877, { firstname: "Matt", lastname: "River" }],
+      [25634544, { firstname: "Leila", lastname: "River" }],
+    ];
+
+    test.each(testCases)("number %s returns %s", (number, expectedValue) => {
+      expect(phoneRegister.getName(number)).toEqual(expectedValue);
+    });
+  });
+
+  test("Get name of wrong number", () => {
+    expect(phoneRegister.getName(1234)).toEqual(null);
+  });
+});

@@ -251,7 +251,7 @@ Returns
 { "firstname": "John", "lastname": "Doe" }
 ```
 
-### Test 2:
+### Test 2: getName by numbers from default data
 
 ### Test 3: wrong number
 
