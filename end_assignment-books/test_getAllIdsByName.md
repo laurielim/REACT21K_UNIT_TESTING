@@ -2,7 +2,7 @@
 
 ## Test 1: Get array of id where value match book name
 
-Test cases:
+Test values:
 
 ```json
 [

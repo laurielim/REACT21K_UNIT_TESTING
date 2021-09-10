@@ -11,4 +11,15 @@ module.exports = class BookStorage {
     const find = this.books.find((book) => book.id === id);
     return find ? find : null;
   }
+
+  getAllIdsByName(value) {
+    if (!value) return null;
+    let result = [];
+    this.books.forEach((book) => {
+      if (book.name.toLowerCase().includes(value.toLowerCase())) {
+        result.push(book.id);
+      }
+    });
+    return result.length ? result : null;
+  }
 };

@@ -37,9 +37,33 @@ describe("Test getById", () => {
   });
 
   test("Returns null when no id match", () => {
-    expect(bookStorage.getById(100)).toEqual(null);
+    expect(bookStorage.getById(100)).toBe(null);
   });
   test("Throws exception if parameter is missing", () => {
     expect(() => bookStorage.getById()).toThrow("parameter missing");
+  });
+});
+
+describe("Test getAllIdsByName", () => {
+  const bookStorage = new BookStorage(data);
+  describe("Get array of id where value match book name", () => {
+    const testValues = [
+      // value, expectedResult
+      ["SQL", [1]],
+      ["databases", [2, 3]],
+      ["hacking", [3]],
+    ];
+
+    test.each(testValues)("Value '%s' returns %s", (value, expectedResult) => {
+      expect(bookStorage.getAllIdsByName(value)).toEqual(expectedResult);
+    });
+  });
+
+  test("Return null if there is no match", () => {
+    expect(bookStorage.getAllIdsByName("javascript")).toBe(null);
+  });
+
+  test("Return null if parameter is missing", () => {
+    expect(bookStorage.getAllIdsByName()).toBe(null);
   });
 });
