@@ -1,6 +1,6 @@
 # **constructor(jsonData)**
 
-## Test 1: Object is created
+## Test 1: Object created
 
 ```js
 new BookStorage(jsonData);

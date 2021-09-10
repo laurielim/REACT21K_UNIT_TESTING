@@ -3,7 +3,7 @@
 ## Test 1: Returns book object with matching id
 
 ```js
-bookstorage.getById(1);
+bookStorage.getById(1);
 ```
 
 returns
@@ -31,7 +31,7 @@ returns
 ## Test 2: Returns null when no id match
 
 ```js
-bookstorage.getById(100);
+bookStorage.getById(100);
 ```
 
 returns
@@ -43,7 +43,7 @@ null
 ## Test 3: Throws exception if parameter is missing
 
 ```js
-bookstorage.getById();
+bookStorage.getById();
 ```
 
-Test exception `'data storage missing'`
+Test exception `'parameter missing'`
