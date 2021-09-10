@@ -123,7 +123,7 @@ Returns the total price of the book including the total price of the extras
 
 ### **getPriceOfTheExtras(id)**
 
-Returns the total price of extras bunled with the book
+Returns the total price of extras bundled with the book
 
 - Parameters: id of the book to be searched
 - Return: the total price of extras. If no extras is found returns 0
