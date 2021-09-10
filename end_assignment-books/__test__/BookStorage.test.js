@@ -148,3 +148,38 @@ describe("Test getAllBookAuthors", () => {
     expect(bookStorage.getAllBookAuthors()).toEqual([]);
   });
 });
+
+describe("Test getAllBooksByAuthor", () => {
+  const bookStorage = new BookStorage(data);
+  test("Returns an array of book object", () => {
+    expect(bookStorage.getAllBooksByAuthor("Layla Jones")).toEqual([
+      {
+        id: 1,
+        name: "NoSql - New Hope",
+        author: "Layla Jones",
+        topics: ["noSql", "sql", "future databases"],
+        price: 25,
+        extras: [
+          {
+            name: "hard cover",
+            price: 30,
+          },
+          {
+            name: "cd",
+            price: 15,
+          },
+        ],
+      },
+    ]);
+  });
+
+  test("Returns an empty array if not book found", () => {
+    expect(bookStorage.getAllBooksByAuthor("JK Rowling")).toEqual([]);
+  });
+
+  test("Throws exception for missing parameter", () => {
+    expect(() => bookStorage.getAllBooksByAuthor()).toThrow(
+      "missing parameter"
+    );
+  });
+});

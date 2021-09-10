@@ -31,4 +31,13 @@ module.exports = class BookStorage {
     });
     return result;
   }
+  getAllBooksByAuthor(author) {
+    if (!author) throw new Error("missing parameter");
+
+    let result = [];
+    this.books.forEach((book) => {
+      if (book.author === author) result.push(book);
+    });
+    return result;
+  }
 };
