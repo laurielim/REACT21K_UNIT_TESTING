@@ -22,4 +22,13 @@ module.exports = class BookStorage {
     });
     return result.length ? result : null;
   }
+
+  getAllBookAuthors() {
+    let result = [];
+    this.books.forEach((book) => {
+      if (book.author && !result.includes(book.author))
+        result.push(book.author);
+    });
+    return result;
+  }
 };

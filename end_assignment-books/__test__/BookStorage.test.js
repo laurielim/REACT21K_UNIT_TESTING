@@ -67,3 +67,84 @@ describe("Test getAllIdsByName", () => {
     expect(bookStorage.getAllIdsByName()).toBe(null);
   });
 });
+
+describe("Test getAllBookAuthors", () => {
+  test("Returns array of author names from default jsonData", () => {
+    const bookStorage = new BookStorage(data);
+    expect(bookStorage.getAllBookAuthors()).toEqual([
+      "Layla Jones",
+      "Antony Lee",
+      "Emily White",
+    ]);
+  });
+
+  test("Returns an empty array if no authors found", () => {
+    const bookStorage = new BookStorage([
+      {
+        id: 1,
+        name: "NoSql - New Hope",
+        author: "",
+        topics: ["noSql", "sql", "future databases"],
+        price: 25,
+        extras: [
+          {
+            name: "hard cover",
+            price: 30,
+          },
+          {
+            name: "cd",
+            price: 15,
+          },
+        ],
+      },
+    ]);
+
+    expect(bookStorage.getAllBookAuthors()).toEqual([]);
+  });
+
+  test("Author is added to the result array only once", () => {
+    const bookStorage = new BookStorage([
+      {
+        id: 1,
+        name: "NoSql - New Hope",
+        author: "Antony Lee",
+        topics: ["noSql", "sql", "future databases"],
+        price: 25,
+        extras: [
+          {
+            name: "hard cover",
+            price: 30,
+          },
+          {
+            name: "cd",
+            price: 15,
+          },
+        ],
+      },
+      {
+        id: 2,
+        name: "Databases - The rise and fall",
+        author: "Antony Lee",
+        topics: ["data storages", "sql", "noSql"],
+        price: 45,
+        extras: [
+          {
+            name: "signed by author",
+            price: 80,
+          },
+          {
+            name: "dvd",
+            price: 65,
+          },
+        ],
+      },
+    ]);
+
+    expect(bookStorage.getAllBookAuthors()).toEqual(["Antony Lee"]);
+  });
+
+  test("No book in BookStorage", () => {
+    const bookStorage = new BookStorage([]);
+    expect(bookStorage.getAllBookAuthors()).toEqual([]);
+  });
+});
