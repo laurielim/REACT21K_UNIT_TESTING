@@ -12,3 +12,27 @@ Test data:
   [3, []]
 ]
 ```
+
+## Test 2: Returns empty array if parameter is missing
+
+```js
+bookStorage.getBookTopics();
+```
+
+returns
+
+```json
+[]
+```
+
+## Test 3: Returns empty array if id does not match
+
+```js
+bookStorage.getBookTopics(1000);
+```
+
+returns
+
+```json
+[]
+```

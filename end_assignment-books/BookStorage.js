@@ -31,6 +31,7 @@ module.exports = class BookStorage {
     });
     return result;
   }
+
   getAllBooksByAuthor(author) {
     if (!author) throw new Error("missing parameter");
 
@@ -47,5 +48,13 @@ module.exports = class BookStorage {
       .filter((book) => book.id === id)
       .map((book) => book.topics?.length);
     return Boolean(topic[0]);
+  }
+
+  getBookTopics(id) {
+    if (!id) return [];
+    for (let book of this.books) {
+      if (book.id === id && "topics" in book) return book.topics;
+    }
+    return [];
   }
 };

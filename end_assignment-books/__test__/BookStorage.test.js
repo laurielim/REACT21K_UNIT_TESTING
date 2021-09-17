@@ -197,17 +197,40 @@ describe("Test hasTopics", () => {
     test.each(testValues)(
       "Book %s returns Boolean %s",
       (value, expectedResult) => {
-        expect(bookStorage.hasTopics(value)).toEqual(expectedResult);
+        expect(bookStorage.hasTopics(value)).toBe(expectedResult);
       }
     );
   });
 
   test("Returns false if parameter is missing", () => {
-    expect(bookStorage.hasTopics()).toEqual(false);
+    expect(bookStorage.hasTopics()).toBe(false);
   });
 });
 
-// describe("Test getBookTopics", () => {});
+describe("Test getBookTopics", () => {
+  const bookStorage = new BookStorage(data);
+  describe("Returns array of book topics if topics found, otherwise returns an empty array", () => {
+    const testValues = [
+      // value, expectedResult
+      [1, ["noSql", "sql", "future databases"]],
+      [2, ["data storages", "sql", "noSql"]],
+      [3, []],
+    ];
+
+    test.each(testValues)("Book %s returns %s", (value, expectedResult) => {
+      expect(bookStorage.getBookTopics(value)).toEqual(expectedResult);
+    });
+  });
+
+  test("Returns empty array if parameter is missing", () => {
+    expect(bookStorage.getBookTopics()).toEqual([]);
+  });
+
+  test("Returns empty array if id does not match", () => {
+    expect(bookStorage.getBookTopics(1000)).toEqual([]);
+  });
+});
+
 // describe("Test getPriceWithoutExtras", () => {});
 // describe("Test getTotalPrice", () => {});
 // describe("Test getPriceOfTheExtras", () => {});
