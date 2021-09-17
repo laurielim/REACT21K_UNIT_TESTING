@@ -45,7 +45,7 @@ module.exports = class BookStorage {
     if (!id) return false;
     const topic = this.books
       .filter((book) => book.id === id)
-      .map((book) => book.topics);
-    return Boolean(topic[0].length);
+      .map((book) => book.topics?.length);
+    return Boolean(topic[0]);
   }
 };
