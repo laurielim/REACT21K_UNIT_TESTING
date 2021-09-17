@@ -1,6 +1,6 @@
 # **getTotalPrice(id)**
 
-## Test 1: Returns the total price of the book including the total price of the extras
+## Test 1: Returns the total price of the book including extras
 
 Test data:
 
@@ -20,3 +20,11 @@ bookStorage.getTotalPrice(5);
 ```
 
 Test exception `'nothing found with given id'`
+
+## Test 3: Throws exception for missing parameter
+
+```js
+bookStorage.getTotalPrice();
+```
+
+Test exception `'missing parameter'`

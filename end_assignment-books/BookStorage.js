@@ -65,4 +65,32 @@ module.exports = class BookStorage {
     }
     throw new Error("nothing found with given id");
   }
+
+  getTotalPrice(id) {
+    if (!id) throw new Error("missing parameter");
+    for (let book of this.books) {
+      if (book.id === id) {
+        let sum = book.price;
+        if ("extras" in book) {
+          book.extras.forEach((extra) => (sum += extra.price));
+        }
+        return sum;
+      }
+    }
+    throw new Error("nothing found with given id");
+  }
+
+  getPriceOfTheExtras(id) {
+    if (!id) throw new Error("missing parameter");
+    for (let book of this.books) {
+      if (book.id === id) {
+        let sum = 0;
+        if ("extras" in book) {
+          book.extras.forEach((extra) => (sum += extra.price));
+        }
+        return sum;
+      }
+    }
+    throw new Error("nothing found with given id");
+  }
 };

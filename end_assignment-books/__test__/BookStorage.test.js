@@ -259,5 +259,56 @@ describe("Test getPriceWithoutExtras", () => {
   });
 });
 
-// describe("Test getTotalPrice", () => {});
-// describe("Test getPriceOfTheExtras", () => {});
+describe("Test getTotalPrice", () => {
+  const bookStorage = new BookStorage(data);
+  describe("Returns the total price of the book including extras", () => {
+    const testValues = [
+      // value, expectedResult
+      [1, 70],
+      [2, 190],
+      [3, 30],
+    ];
+
+    test.each(testValues)("Book %s returns %s", (value, expectedResult) => {
+      expect(bookStorage.getTotalPrice(value)).toEqual(expectedResult);
+    });
+  });
+
+  test("Throws exception if no book with matching id found", () => {
+    expect(() => bookStorage.getTotalPrice(5)).toThrow(
+      "nothing found with given id"
+    );
+  });
+
+  test("Throws exception for missing parameter", () => {
+    expect(() => bookStorage.getTotalPrice()).toThrow("missing parameter");
+  });
+});
+
+describe("Test getPriceOfTheExtras", () => {
+  const bookStorage = new BookStorage(data);
+  describe("Returns the total price of extras. If no extras is found returns 0", () => {
+    const testValues = [
+      // value, expectedResult
+      [1, 45],
+      [2, 145],
+      [3, 0],
+    ];
+
+    test.each(testValues)("Book %s returns %s", (value, expectedResult) => {
+      expect(bookStorage.getPriceOfTheExtras(value)).toEqual(expectedResult);
+    });
+  });
+
+  test("Throws exception if no book with matching id found", () => {
+    expect(() => bookStorage.getPriceOfTheExtras(5)).toThrow(
+      "nothing found with given id"
+    );
+  });
+
+  test("Throws exception for missing parameter", () => {
+    expect(() => bookStorage.getPriceOfTheExtras()).toThrow(
+      "missing parameter"
+    );
+  });
+});
