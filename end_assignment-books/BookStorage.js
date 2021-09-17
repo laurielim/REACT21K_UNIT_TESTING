@@ -40,4 +40,12 @@ module.exports = class BookStorage {
     });
     return result;
   }
+
+  hasTopics(id) {
+    if (!id) return false;
+    const topic = this.books
+      .filter((book) => book.id === id)
+      .map((book) => book.topics);
+    return Boolean(topic[0].length);
+  }
 };

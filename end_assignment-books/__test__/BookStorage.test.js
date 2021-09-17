@@ -183,3 +183,31 @@ describe("Test getAllBooksByAuthor", () => {
     );
   });
 });
+
+describe("Test hasTopics", () => {
+  const bookStorage = new BookStorage(data);
+  describe("Returns true if the book has topics, otherwise returns false", () => {
+    const testValues = [
+      // value, expectedResult
+      [1, true],
+      [2, true],
+      [3, false],
+    ];
+
+    test.each(testValues)(
+      "Book %s returns Boolean %s",
+      (value, expectedResult) => {
+        expect(bookStorage.hasTopics(value)).toEqual(expectedResult);
+      }
+    );
+  });
+
+  test("Returns false if parameter is missing", () => {
+    expect(bookStorage.hasTopics()).toEqual(false);
+  });
+});
+
+// describe("Test getBookTopics", () => {});
+// describe("Test getPriceWithoutExtras", () => {});
+// describe("Test getTotalPrice", () => {});
+// describe("Test getPriceOfTheExtras", () => {});

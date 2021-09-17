@@ -6,7 +6,7 @@ Test data:
 
 ```json
 [
-  // value, expectedReturn
+  // value, expectedResult
   [1, true],
   [2, true],
   [3, false]
