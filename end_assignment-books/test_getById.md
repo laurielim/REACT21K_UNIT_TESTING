@@ -46,4 +46,4 @@ null
 bookStorage.getById();
 ```
 
-Test exception `'parameter missing'`
+Test exception `'missing parameter'`

@@ -7,7 +7,7 @@ module.exports = class BookStorage {
   }
 
   getById(id) {
-    if (!id) throw new Error("parameter missing");
+    if (!id) throw new Error("missing parameter");
     const find = this.books.find((book) => book.id === id);
     return find ? find : null;
   }
@@ -56,5 +56,13 @@ module.exports = class BookStorage {
       if (book.id === id && "topics" in book) return book.topics;
     }
     return [];
+  }
+
+  getPriceWithoutExtras(id) {
+    if (!id) throw new Error("missing parameter");
+    for (let book of this.books) {
+      if (book.id === id) return book.price;
+    }
+    throw new Error("nothing found with given id");
   }
 };

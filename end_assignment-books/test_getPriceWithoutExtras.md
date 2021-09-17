@@ -20,3 +20,11 @@ bookStorage.getPriceWithoutExtras(5);
 ```
 
 Test exception `'nothing found with given id'`
+
+## Test 3: Throws exception for missing parameter
+
+```js
+bookStorage.getPriceWithoutExtras();
+```
+
+Test exception `'missing parameter'`
